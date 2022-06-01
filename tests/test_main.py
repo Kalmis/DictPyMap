@@ -1,6 +1,11 @@
-from dictpymap import transform_data_to_data_schema, return_value_from_path_or_none
-
 from typing import Any, List, Optional
+
+from dictpymap import (
+    transform_data_to_data_schema,
+    return_value_from_path_or_none,
+    InvalidConfigError,
+)
+import pytest
 
 
 def return_value_from_path_or_test_str(data: dict[Any, Any], path: List[str]) -> Optional[Any]:
@@ -43,3 +48,9 @@ class TestMain:
         }
         actual = transform_data_to_data_schema(schema, data)
         assert expected == actual
+
+    def test_invalid_config(self):
+        schema = {"invalid": set()}
+        data = {}
+        with pytest.raises(InvalidConfigError):
+            transform_data_to_data_schema(schema, data)

@@ -1,7 +1,7 @@
 from typing import Any, Callable, Dict, List, Union
 
-from .functions import return_value_from_path_or_none
 from .exceptions import InvalidConfigError
+from .functions import return_value_from_path_or_none
 
 SchemaDict = Dict[Any, Union[str, Dict]]
 
@@ -26,5 +26,5 @@ def transform_data_to_data_schema(
             # The dictionary is part of the new schema
             new_data[key] = transform_data_to_data_schema(config, data)
         else:
-            InvalidConfigError(f"Key {key} in schema has invalid config")
+            raise InvalidConfigError(f"Key {key} in schema has invalid config")
     return new_data
