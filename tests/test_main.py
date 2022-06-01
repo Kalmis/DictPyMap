@@ -15,13 +15,20 @@ class TestMain:
             "hardcoded_none": None,
             "path_shortcut": ["existing", "path"],
             "full_config": {
-                "path": ["Another", "Path"],
-                "function": return_value_from_path_or_test_str,
+                "__path": ["Another", "Path"],
+                "__function": return_value_from_path_or_test_str,
             },
             "non_existing": ["Non", "existing", "path"],
             "full_config_non_existing": {
-                "path": ["Another", "Non", "Existent", "Path"],
-                "function": return_value_from_path_or_test_str,
+                "__path": ["Another", "Non", "Existent", "Path"],
+                "__function": return_value_from_path_or_test_str,
+            },
+            "inner_dict": {
+                "path_shortcut": ["existing", "path"],
+                "full_config": {
+                    "__path": ["Another", "Path"],
+                    "__function": return_value_from_path_or_test_str,
+                },
             },
         }
         data = {"existing": {"path": "Hello"}, "Another": {"Path": "World!"}}
@@ -32,6 +39,7 @@ class TestMain:
             "full_config": "World!",
             "non_existing": None,
             "full_config_non_existing": "TEST_VALUE!",
+            "inner_dict": {"path_shortcut": "Hello", "full_config": "World!"},
         }
         actual = transform_data_to_data_schema(schema, data)
         assert expected == actual

@@ -2,5 +2,9 @@ class DictPyMapError(Exception):
     pass
 
 
-class InvalidConfigOrData(DictPyMapError):
+class InvalidConfigError(DictPyMapError):
+    pass
+
+
+class InvalidConfigOrDataError(DictPyMapError):
     pass

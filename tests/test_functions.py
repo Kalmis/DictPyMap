@@ -1,5 +1,5 @@
 import pytest
-from dictpymap import return_value_from_path_or_none, InvalidConfigOrData
+from dictpymap import return_value_from_path_or_none, InvalidConfigOrDataError
 
 
 class TestFunctions:
@@ -20,17 +20,17 @@ class TestFunctions:
 
     def test_return_value_or_none_invalid_data(self):
         data = {"non": []}
-        with pytest.raises(InvalidConfigOrData):
+        with pytest.raises(InvalidConfigOrDataError):
             return_value_from_path_or_none(data, ["non", "existent"])
 
         data = {"non": "text"}
-        with pytest.raises(InvalidConfigOrData):
+        with pytest.raises(InvalidConfigOrDataError):
             return_value_from_path_or_none(data, ["non", "existent"])
 
         data = {"non": 1}
-        with pytest.raises(InvalidConfigOrData):
+        with pytest.raises(InvalidConfigOrDataError):
             return_value_from_path_or_none(data, ["non", "existent"])
 
-        data = {"non": InvalidConfigOrData}
-        with pytest.raises(InvalidConfigOrData):
+        data = {"non": InvalidConfigOrDataError}
+        with pytest.raises(InvalidConfigOrDataError):
             return_value_from_path_or_none(data, ["non", "existent"])
