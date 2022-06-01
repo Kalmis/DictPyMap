@@ -1,4 +1,8 @@
--r test-requirements.txt
+pytest
+tox
+mypy
+coverage
+
 black==22.3.0
 # Flake8 plugins
 flake8

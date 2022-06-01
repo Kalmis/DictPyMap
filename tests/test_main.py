@@ -1,4 +1,4 @@
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from dictpymap import (
     transform_data_to_data_schema,
@@ -8,7 +8,7 @@ from dictpymap import (
 import pytest
 
 
-def return_value_from_path_or_test_str(data: dict[Any, Any], path: List[str]) -> Optional[Any]:
+def return_value_from_path_or_test_str(data: Dict[Any, Any], path: List[str]) -> Optional[Any]:
     value = return_value_from_path_or_none(data, path)
     return value or "TEST_VALUE!"
 

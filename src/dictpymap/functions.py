@@ -1,9 +1,9 @@
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 
 from .exceptions import InvalidConfigOrDataError
 
 
-def return_value_from_path_or_none(data: dict[Any, Any], path: List[str]) -> Optional[Any]:
+def return_value_from_path_or_none(data: Dict[Any, Any], path: List[str]) -> Optional[Any]:
     element_value = data
     element_name = None
     try:

@@ -8,7 +8,7 @@ SchemaDict = Dict[Any, Union[str, Dict]]
 
 def transform_data_to_data_schema(
     schema_config: SchemaDict,
-    data: dict[Any, Any],
+    data: Dict[Any, Any],
     default_function: Callable[[Dict, List], Any] = return_value_from_path_or_none,
 ):
     new_data: Dict[Any, Any] = {}
